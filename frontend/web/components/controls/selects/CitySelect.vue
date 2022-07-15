@@ -4,19 +4,24 @@
     :value="value"
     clearable
     filled
-    rounded
     solo
     :dense="dense"
+    prepend-icon="mdi-magnify"
+    color="primary"
     label="Куда едем?"
     :items="items"
     @change="onCitySelectHandler"
   >
     <template v-slot:item="data">
       <v-chip
-        color="accent" small outlined
+        color="accent"
+        small
+        outlined
         class="mr-3 text--disabled darken-2"
       >
-        <span class="accent-1 text-subtitle-2 text--disabled">{{ data.item.country }}</span>
+        <span class="accent-1 text-subtitle-2 text--disabled">{{
+          data.item.country
+        }}</span>
       </v-chip>
       <v-list-item-content v-text="data.item.text"></v-list-item-content>
     </template>
@@ -24,59 +29,79 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
-  name: "CitySelect",
-  props:{
-    dense:{
+  name: 'CitySelect',
+  props: {
+    dense: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    value:{
+    value: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  data(){
-    return{
+  data() {
+    return {
       cities: [
-        { url: 'moscow', title: 'Москва', count: 10000, country: { alfa2: 'RU'} },
-        { url: 'rostov-on-don', title: 'Ростов-на-Дону', count: 10000, country: { alfa2: 'RU'} },
-        { url: 'sochi', title: 'Сочи', count: 10000, country: { alfa2: 'RU'} },
+        {
+          url: 'moscow',
+          title: 'Москва',
+          count: 10000,
+          country: { alfa2: 'RU' },
+        },
+        {
+          url: 'rostov-on-don',
+          title: 'Ростов-на-Дону',
+          count: 10000,
+          country: { alfa2: 'RU' },
+        },
+        { url: 'sochi', title: 'Сочи', count: 10000, country: { alfa2: 'RU' } },
       ],
-
     }
   },
-  computed:{
-    items(){
+  computed: {
+    items() {
       return this.cities.map((item) => {
-        return { value: item.url, text: item.title, count: 0, country: item?.country?.alfa2 }
-      });
-    }
+        return {
+          value: item.url,
+          text: item.title,
+          count: 0,
+          country: item?.country?.alfa2,
+        }
+      })
+    },
   },
   mounted() {
     // this.getCities().then((response) => {
     //   this.cities = response.data;
     // });
   },
-  methods:{
+  methods: {
     ...mapActions({
-        getCities: 'web/geo/cities'
+      getCities: 'web/geo/cities',
     }),
     onCitySelectHandler(value) {
       this.$emit('input', value)
     },
 
-    activateMenu(){
+    activateMenu() {
       this.$refs.selectCity.focus()
       this.$refs.selectCity.activateMenu()
       this.$refs.selectCity.isMenuActive = true
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style scoped>
-
+<style>
+.theme--light.v-icon.mdi-magnify {
+  color: #33bdb5;
+}
+.v-application .primary--text {
+  color: #33bdb5 !important;
+  caret-color: #33bdb5 !important;
+}
 </style>

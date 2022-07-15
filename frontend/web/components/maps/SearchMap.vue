@@ -3,20 +3,23 @@
     <yandex-map
       :coords="center"
       :zoom="zoom"
-      :use-object-manager="true" :object-manager-clusterize="true"
+      :use-object-manager="true"
+      :object-manager-clusterize="true"
       :use-html-in-layout="true"
       :options="mapOptions"
       :controls="['zoomControl', 'typeSelector']"
       @update:bounds="$emit('update:bounds', $event)"
       style="width: 100%; height: 100%"
     >
-      <ymap-marker v-for="item in points" :key="item.id"
+      <ymap-marker
+        v-for="item in points"
+        :key="item.id"
         :marker-id="item.id"
         :coords="item.coords.coordinates"
         :options="{ preset: 'islands#blackStretchyIcon' }"
         :properties="{ iconContent: '5 000 ₽' }"
-         @balloonopen="onBalloonOpenHandler(item.id)"
-                   :callbacks="{ balloonopen: onBalloonOpenHandler(item.id) }"
+        @balloonopen="onBalloonOpenHandler(item.id)"
+        :callbacks="{ balloonopen: onBalloonOpenHandler(item.id) }"
       >
         <object-card slot="balloon" orientation="vertical" map></object-card>
       </ymap-marker>
@@ -26,7 +29,7 @@
 
 <script>
 import { yandexMap, ymapMarker } from 'vue-yandex-maps'
-import { mapGetters, mapState, mapActions } from "vuex";
+import { mapGetters, mapState, mapActions } from 'vuex'
 import ObjectCard from '../../components/cards/ObjectCard'
 
 export default {
@@ -38,7 +41,6 @@ export default {
         maxZoom: 24,
         minZoom: 6,
         suppressMapOpenBlock: true,
-
       },
       marker: {
         icon: {
@@ -56,26 +58,24 @@ export default {
       },
     }
   },
-  computed:{
+  computed: {
     ...mapGetters({
       center: 'web/geo/cityCoords',
     }),
     ...mapState({
-      city: state => state.web.geo.city,
-      points: state => state.web.search.points
+      city: (state) => state.web.geo.city,
+      points: (state) => state.web.search.points,
     }),
-    zoom(){
-      return this.city?.zoom || 10;
-    }
+    zoom() {
+      return this.city?.zoom || 10
+    },
   },
-  methods:{
-    ...mapActions({
-
-    }),
-    onBalloonOpenHandler(e){
+  methods: {
+    ...mapActions({}),
+    onBalloonOpenHandler(e) {
       console.log(e)
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -3,14 +3,23 @@
     <v-row>
       <v-col cols="12" md="1"></v-col>
       <v-col cols="12" md="3">
-        <v-tooltip slot="append" v-model="showCityHint" :top="!short" :bottom="short">
+        <v-tooltip
+          slot="append"
+          v-model="showCityHint"
+          :top="!short"
+          :bottom="short"
+        >
           <template #activator="{}">
-            <city-select ref="citySelect" v-model="city" :dense="short" @input="onCityChange"></city-select>
+            <city-select
+              ref="citySelect"
+              v-model="city"
+              :dense="short"
+              @input="onCityChange"
+            ></city-select>
           </template>
           <v-icon dense color="accent">mdi-home-search</v-icon>
           <span> Выберите пункт назначения </span>
         </v-tooltip>
-
       </v-col>
       <v-col cols="12" md="3">
         <v-menu
@@ -88,15 +97,12 @@
 </template>
 
 <script>
-
-import { mapMutations } from "vuex";
-import CitySelect from "../../controls/selects/CitySelect";
+import { mapMutations } from 'vuex'
+import CitySelect from '../../controls/selects/CitySelect'
 const DATE_FORMAT = 'D.MM.YYYY'
-
 export default {
   name: 'SmallSearchForm',
-  components: {CitySelect},
-
+  components: { CitySelect },
   props: {
     short: {
       type: Boolean,
@@ -105,16 +111,13 @@ export default {
   },
   data: (vm) => ({
     valid: false,
-
     dateFrom: null,
     dateTo: null,
     city: vm.$route.params.city,
-
     dateFromFormatted: !vm.dateFrom ? '' : vm.formatDate(vm.dateFrom),
     dateToFormatted: !vm.dateTo ? '' : vm.formatDate(vm.dateTo),
     menuDateFrom: false,
     menuDateTo: false,
-
     showCityHint: false,
   }),
   computed: {
@@ -122,7 +125,6 @@ export default {
       return this.formatDate(this.date)
     },
   },
-
   watch: {
     dateFrom(val) {
       this.dateFromFormatted = this.formatDate(this.dateFrom)
@@ -131,23 +133,21 @@ export default {
       this.dateToFormatted = this.formatDate(this.dateTo)
     },
   },
-
   methods: {
     ...mapMutations({
-      'setCurrentCity' : 'web/geo/setCity'
+      setCurrentCity: 'web/geo/setCity',
     }),
-    onCityChange(value){
-      this.showCityHint = false;
-      this.setCurrentCity(value);
-      if(this.short){
-        this.submit();
+    onCityChange(value) {
+      this.showCityHint = false
+      this.setCurrentCity(value)
+      if (this.short) {
+        this.submit()
       }
     },
-
     submit() {
       if (!this.city) {
         this.showCityHint = true
-        this.$refs.citySelect.activateMenu();
+        this.$refs.citySelect.activateMenu()
         return
       }
       const url = `/search/${this.city}/`

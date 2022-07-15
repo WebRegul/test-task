@@ -21,7 +21,8 @@
         Выше будут какие-то ссылки
       </v-col>
       <v-col class="py-4 text-center white--text" cols="12">
-        {{ new Date().getFullYear() }} — <strong>ООО "Рога и Копыта"</strong>
+        {{ new Date().getFullYear() }} —
+        <strong>2022 © ООО “Понаехали” </strong>
       </v-col>
     </v-row>
   </v-footer>

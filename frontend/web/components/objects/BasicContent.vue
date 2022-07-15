@@ -30,7 +30,7 @@
           class="align-self-center"
         >
           <v-radio
-            v-for="(item, key ) in form.houseType.list"
+            v-for="(item, key) in form.houseType.list"
             :key="key"
             :label="item.title"
             :value="item.value"
@@ -73,47 +73,29 @@
 
         <v-row>
           <v-col cols="6">
-            <v-text-field
-              outlined
-
-              label="Корпус"
-              required
-            ></v-text-field>
+            <v-text-field outlined label="Корпус" required></v-text-field>
           </v-col>
           <v-col cols="6">
-            <v-text-field
-              outlined
-
-              label="Строение"
-              required
-            ></v-text-field>
+            <v-text-field outlined label="Строение" required></v-text-field>
           </v-col>
         </v-row>
       </v-col>
       <v-col cols="6">
-        <v-sheet
-          class="d-flex"
-          color="teal lighten-3"
-          height="150"
-        >  </v-sheet>
+        <v-sheet class="d-flex" color="teal lighten-3" height="150"> </v-sheet>
       </v-col>
     </v-row>
     <h2>Правила размещения</h2>
     <v-container>
-      <v-row >
+      <v-row>
         <!--Заезд-->
         <v-col cols="4">
           <div class="d-flex">
-            <v-banner
-              outlined
-              class="banner align-self-center mr-3"
-            >Заезд</v-banner>
+            <v-banner outlined class="banner align-self-center mr-3"
+              >Заезд</v-banner
+            >
             <div class="d-flex flex-column">
               <div class="d-flex align-center">
-                <v-banner
-                  class="banner--sm -3"
-                  outlined
-                >C</v-banner>
+                <v-banner class="banner--sm -3" outlined>C</v-banner>
                 <v-select
                   :items="form.clock"
                   label=""
@@ -122,10 +104,7 @@
                 ></v-select>
               </div>
               <div class="d-flex align-center">
-                <v-banner
-                  class="banner--sm"
-                  outlined
-                >До</v-banner>
+                <v-banner class="banner--sm" outlined>До</v-banner>
                 <v-select
                   :items="form.clock"
                   label=""
@@ -139,16 +118,12 @@
         <!--Выезд-->
         <v-col cols="4">
           <div class="d-flex">
-            <v-banner
-              outlined
-              class="banner align-self-center mr-3"
-            >Выезд</v-banner>
+            <v-banner outlined class="banner align-self-center mr-3"
+              >Выезд</v-banner
+            >
             <div class="d-flex flex-column">
               <div class="d-flex align-center">
-                <v-banner
-                  class="banner--sm -3"
-                  outlined
-                >C</v-banner>
+                <v-banner class="banner--sm -3" outlined>C</v-banner>
                 <v-select
                   :items="form.clock"
                   label=""
@@ -157,10 +132,7 @@
                 ></v-select>
               </div>
               <div class="d-flex align-center">
-                <v-banner
-                  class="banner--sm"
-                  outlined
-                >До</v-banner>
+                <v-banner class="banner--sm" outlined>До</v-banner>
                 <v-select
                   :items="form.clock"
                   label=""
@@ -188,16 +160,14 @@
           ></v-switch>
           <v-tooltip right>
             <template v-slot:activator="{ on, attrs }">
-              <v-icon
-                color="primary"
-                dark
-                v-bind="attrs"
-                v-on="on"
-              >
+              <v-icon color="primary" dark v-bind="attrs" v-on="on">
                 mdi-information
               </v-icon>
             </template>
-            <span>Заполните параметры и сохраните объект, чтобы его опубликовать</span>
+            <span
+              >Заполните параметры и сохраните объект, чтобы его
+              опубликовать</span
+            >
           </v-tooltip>
         </v-col>
       </v-row>
@@ -208,29 +178,26 @@
           v-for="(param, key) in form.placementRules.conditions"
           :key="key"
         >
-
           <v-row>
             <h3 class="mr-2">
-              {{param.name}}
+              {{ param.name }}
             </h3>
             <v-tooltip right>
               <template v-slot:activator="{ on, attrs }">
-                <v-icon
-                  color="primary"
-                  dark
-                  v-bind="attrs"
-                  v-on="on"
-                >
+                <v-icon color="primary" dark v-bind="attrs" v-on="on">
                   mdi-information
                 </v-icon>
               </template>
-              <span>Заполните параметры и сохраните объект, чтобы его опубликовать</span>
+              <span
+                >Заполните параметры и сохраните объект, чтобы его
+                опубликовать</span
+              >
             </v-tooltip>
           </v-row>
           <v-row>
             <v-radio-group v-model="param.value">
               <v-radio
-                v-for="(item,key) in param.list"
+                v-for="(item, key) in param.list"
                 :key="key"
                 :label="item.name"
                 :value="item.value"
@@ -244,167 +211,212 @@
 </template>
 
 <script>
-  import {mapGetters} from "vuex";
-  import TextInput from "../base/TextInput";
-  import AreaInput from "../base/AreaInput";
+import { mapGetters } from 'vuex'
+import TextInput from '../base/TextInput'
+import AreaInput from '../base/AreaInput'
 
-  export default {
-    name: "BasicContent",
-    components: { TextInput, AreaInput },
-    props: {
-      value: {
-        type: Object,
-        default: () => {}
-      }
+export default {
+  name: 'BasicContent',
+  components: { TextInput, AreaInput },
+  props: {
+    value: {
+      type: Object,
+      default: () => {},
     },
-    data() {
-      return {
-        form: {
-          title: 'Название объявления',
-          name: {
-            hint: 'Опишите кратко ваше объявление. Например: Уютная трехкомнатная квартира в центре',
-            counter: 100,
-            rules: [v => (v ? v.length : null ) <= this.name.counter || `Максимум ${this.name.counter} символов`],
-          },
-          description: {
-            value: '',
-            title: 'Описание',
-            hint: 'Опишите детально ваше предложение. Расскажите, чем вы можете быть интересны гостям',
-            counter: 5000,
-            rules: [v => (v ? v.length : null) <= this.description.counter || `Максимум ${this.description.counter} символов`],
-          },
-          clock: [
-            '01.00',
-            '02.00',
-            '03.00',
-            '04.00',
-            '05.00',
-            '06.00',
+  },
+  data() {
+    return {
+      form: {
+        title: 'Название объявления',
+        name: {
+          hint: 'Опишите кратко ваше объявление. Например: Уютная трехкомнатная квартира в центре',
+          counter: 100,
+          rules: [
+            (v) =>
+              (v ? v.length : null) <= this.name.counter ||
+              `Максимум ${this.name.counter} символов`,
           ],
-          apartmentTypes: [
-            'Квартира',
-            'Отель',
-          ],
-          houseType: {
-            value: null,
-            list: [
-              {
-                title: 'Целиком',
-                value: 'full'
-              },
-              {
-                title: 'Комната',
-                value: 'room'
-              },
-              {
-                title: 'Спальное место',
-                value: 'bed'
-              }
-            ]
-          },
-          stars: 1,
-          placementRules: {
-            checkIn: {
-              start: 12,
-              end: 23,
-            },
-            exit: {
-              start: 12,
-              end: 23,
-            },
-            params: [
-              { name: 'Гибкое время заезда/выезда', value: false},
-              { name: 'Самостоятельное заселение', value: false},
-              { name: 'Круглосуточная стойка регистрации', value: false},
-              { name: 'Мгновенное бронирование', value: false},
-              { name: 'Бесплатная отмена бронирования', value: false},
-            ],
-            conditions: [
-              {
-                name: 'Проведение вечеринок/мероприятий',
-                list: [
-                  { name: 'Проведение вечеринок/мероприятий строго запрещено', value: 1 },
-                  { name: 'Проведение вечеринок/мероприятий по согласованию', value: 2 },
-                  { name: 'Разрешено проведение вечеринок/мероприятий', value: 3 },
-                ],
-                value: ''
-              },
-              {
-                name: 'Курение',
-                list: [
-                  { name: 'Проведение вечеринок/мероприятий строго запрещено', value: 1 },
-                  { name: 'Проведение вечеринок/мероприятий по согласованию', value: 2 },
-                  { name: 'Разрешено проведение вечеринок/мероприятий', value: 3 },
-                ],
-                value: ''
-              },
-              {
-                name: 'Электронные сигареты',
-                list: [
-                  { name: 'Проведение вечеринок/мероприятий строго запрещено', value: 1 },
-                  { name: 'Проведение вечеринок/мероприятий по согласованию', value: 2 },
-                  { name: 'Разрешено проведение вечеринок/мероприятий', value: 3 },
-                ],
-                value: ''
-              },
-              {
-                name: 'Дети',
-                list: [
-                  { name: 'Проведение вечеринок/мероприятий строго запрещено', value: 1 },
-                  { name: 'Проведение вечеринок/мероприятий по согласованию', value: 2 },
-                  { name: 'Разрешено проведение вечеринок/мероприятий', value: 3 },
-                  { name: 'Разрешено проведение вечеринок/мероприятий', value: 4 },
-                  { name: 'Разрешено проведение вечеринок/мероприятий', value: 5 },
-                ],
-                value: ''
-              },
-              {
-                name: 'Животные',
-                list: [
-                  { name: 'Проведение вечеринок/мероприятий строго запрещено', value: 1 },
-                  { name: 'Проведение вечеринок/мероприятий по согласованию', value: 2 },
-                  { name: 'Разрешено проведение вечеринок/мероприятий', value: 3 },
-                ],
-                value: ''
-              },
-            ]
-          }
-        }
-      }
-    },
-    computed: {
-      ...mapGetters({
-        params: 'cabinet/objects/params',
-      }),
-      /**
-       * название объекта
-       */
-      title : {
-        get(){
-          return this.value?.title;
         },
-        set(value){
-          this.$emit('change', {...this.value, ... {title : value}});
-        }
+        description: {
+          value: '',
+          title: 'Описание',
+          hint: 'Опишите детально ваше предложение. Расскажите, чем вы можете быть интересны гостям',
+          counter: 5000,
+          rules: [
+            (v) =>
+              (v ? v.length : null) <= this.description.counter ||
+              `Максимум ${this.description.counter} символов`,
+          ],
+        },
+        clock: ['01.00', '02.00', '03.00', '04.00', '05.00', '06.00'],
+        apartmentTypes: ['Квартира', 'Отель'],
+        houseType: {
+          value: null,
+          list: [
+            {
+              title: 'Целиком',
+              value: 'full',
+            },
+            {
+              title: 'Комната',
+              value: 'room',
+            },
+            {
+              title: 'Спальное место',
+              value: 'bed',
+            },
+          ],
+        },
+        stars: 1,
+        placementRules: {
+          checkIn: {
+            start: 12,
+            end: 23,
+          },
+          exit: {
+            start: 12,
+            end: 23,
+          },
+          params: [
+            { name: 'Гибкое время заезда/выезда', value: false },
+            { name: 'Самостоятельное заселение', value: false },
+            { name: 'Круглосуточная стойка регистрации', value: false },
+            { name: 'Мгновенное бронирование', value: false },
+            { name: 'Бесплатная отмена бронирования', value: false },
+          ],
+          conditions: [
+            {
+              name: 'Проведение вечеринок/мероприятий',
+              list: [
+                {
+                  name: 'Проведение вечеринок/мероприятий строго запрещено',
+                  value: 1,
+                },
+                {
+                  name: 'Проведение вечеринок/мероприятий по согласованию',
+                  value: 2,
+                },
+                {
+                  name: 'Разрешено проведение вечеринок/мероприятий',
+                  value: 3,
+                },
+              ],
+              value: '',
+            },
+            {
+              name: 'Курение',
+              list: [
+                {
+                  name: 'Проведение вечеринок/мероприятий строго запрещено',
+                  value: 1,
+                },
+                {
+                  name: 'Проведение вечеринок/мероприятий по согласованию',
+                  value: 2,
+                },
+                {
+                  name: 'Разрешено проведение вечеринок/мероприятий',
+                  value: 3,
+                },
+              ],
+              value: '',
+            },
+            {
+              name: 'Электронные сигареты',
+              list: [
+                {
+                  name: 'Проведение вечеринок/мероприятий строго запрещено',
+                  value: 1,
+                },
+                {
+                  name: 'Проведение вечеринок/мероприятий по согласованию',
+                  value: 2,
+                },
+                {
+                  name: 'Разрешено проведение вечеринок/мероприятий',
+                  value: 3,
+                },
+              ],
+              value: '',
+            },
+            {
+              name: 'Дети',
+              list: [
+                {
+                  name: 'Проведение вечеринок/мероприятий строго запрещено',
+                  value: 1,
+                },
+                {
+                  name: 'Проведение вечеринок/мероприятий по согласованию',
+                  value: 2,
+                },
+                {
+                  name: 'Разрешено проведение вечеринок/мероприятий',
+                  value: 3,
+                },
+                {
+                  name: 'Разрешено проведение вечеринок/мероприятий',
+                  value: 4,
+                },
+                {
+                  name: 'Разрешено проведение вечеринок/мероприятий',
+                  value: 5,
+                },
+              ],
+              value: '',
+            },
+            {
+              name: 'Животные',
+              list: [
+                {
+                  name: 'Проведение вечеринок/мероприятий строго запрещено',
+                  value: 1,
+                },
+                {
+                  name: 'Проведение вечеринок/мероприятий по согласованию',
+                  value: 2,
+                },
+                {
+                  name: 'Разрешено проведение вечеринок/мероприятий',
+                  value: 3,
+                },
+              ],
+              value: '',
+            },
+          ],
+        },
       },
-      object: {
-        get() {
-          // return {...this.value}
-          // return { ...this.form, ...this.value}
-          return this.value;
-        },
-        set(value) {
-          console.log(value)
-          debugger
-          // this.$emit('change', value);
-
-        }
-      }
     }
-
-  }
+  },
+  computed: {
+    ...mapGetters({
+      params: 'cabinet/objects/params',
+    }),
+    /**
+     * название объекта
+     */
+    title: {
+      get() {
+        return this.value?.title
+      },
+      set(value) {
+        this.$emit('change', { ...this.value, ...{ title: value } })
+      },
+    },
+    object: {
+      get() {
+        // return {...this.value}
+        // return { ...this.form, ...this.value}
+        return this.value
+      },
+      set(value) {
+        console.log(value)
+        debugger
+        // this.$emit('change', value);
+      },
+    },
+  },
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

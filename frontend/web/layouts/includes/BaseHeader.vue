@@ -24,16 +24,14 @@
 
 <script>
 import { mdiBiohazard } from '@mdi/js'
-import {mapGetters} from "vuex";
+import { mapGetters } from 'vuex'
 import SmallSearchForm from '../../components/forms/search/SmallSearchForm'
-import Registration from "../../components/cabinet/Registration";
-import SmsConfirm from "../../components/cabinet/SmsConfirm";
-import Login from "../../components/cabinet/Login";
-
-
+// import Registration from '../../components/cabinet/Registration'
+// import SmsConfirm from '../../components/cabinet/SmsConfirm'
+// import Login from '../../components/cabinet/Login'
 export default {
   name: 'BaseHeader',
-  components: { SmallSearchForm},
+  components: { SmallSearchForm },
   props: {
     search: {
       type: Boolean,
@@ -45,15 +43,11 @@ export default {
     title: 'Понаехали!',
   }),
   computed: {
-    ...mapGetters({
-
-    }),
+    ...mapGetters({}),
   },
   methods: {
-    toggleVisible(type, value) {
-
-    }
-  }
+    toggleVisible(type, value) {},
+  },
 }
 </script>
 
