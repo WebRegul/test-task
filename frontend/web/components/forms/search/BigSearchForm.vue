@@ -1,6 +1,6 @@
 <template>
   <v-card class="border_radius_header">
-    <v-container class="py-0 mr-15">
+    <v-container class="py-0 mr-0">
       <v-form ref="search">
         <v-row class="pt-3 pb-3">
           <v-spacer></v-spacer>
@@ -23,7 +23,8 @@
             hide-details
             label="26.04 - 01.05"
             single-line
-            class="ml-16"
+            center
+            class="ml-2 mr0"
           ></v-text-field>
           <v-divider vertical class="vertical_header"></v-divider>
           <v-text-field
@@ -33,7 +34,7 @@
             hide-details
             label="3 гостя, 1 питомец"
             single-line
-            class="ml-16"
+            class="ml-2"
           ></v-text-field>
         </v-row>
       </v-form>

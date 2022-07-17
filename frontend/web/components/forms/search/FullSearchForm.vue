@@ -55,18 +55,18 @@
         :key="item.id"
         outlined
         :value="item.id"
-        class="chip_search hidden-xl-and-up hidden-md-and-down v-text-field"
+        class="chip_search hidden-xl-and-up hidden-lg-and-down v-text-field"
         >{{ item.title }}</v-chip
       >
-      <!-- <v-chip
+      <v-chip
         v-for="item in optionsList"
         v-show="item.original"
         :key="item.id"
         outlined
         :value="item.id"
-        class="chip_search hidden-xl-and-down hidden-lg-and-up"
+        class="chip_search hidden-xl-only hidden-md-only hidden-sm-only hidden-xs-only"
         >{{ item.title }}</v-chip
-      > -->
+      >
     </v-chip-group>
     <v-divider
       inset
@@ -378,7 +378,7 @@ export default {
 
 .vertical_header {
   width: 28px;
-  height: 48px;
+  height: 35px;
   border: 1px solid #afafb0;
 }
 .v-text-field {

@@ -27,8 +27,8 @@
       </v-col>
 
       <v-col class="py-1 text-center" cols="12">
-        {{ new Date().getFullYear() }} —
-        <strong>2022 © ООО “Понаехали” </strong>
+        {{ new Date().getFullYear() }}
+        <strong>© ООО “Понаехали” </strong>
       </v-col>
     </v-row>
   </v-footer>
@@ -46,6 +46,7 @@ export default {
 
 <style scoped>
 .hr-color {
+  max-width: 1180px;
   height: 1px;
   background: #5f5f61;
 }

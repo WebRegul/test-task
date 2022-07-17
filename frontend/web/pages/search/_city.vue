@@ -1,8 +1,15 @@
 <template>
   <v-container fluid pa-0 class="search__container mb-16 mr-5 ml-5">
     <v-row class="search__container__row">
-      <v-col cols="12" md="6" lg="5" xl="4" class="pr-md-1">
-        <v-list color="#D3D3D4">
+      <v-col
+        cols="12"
+        md="6"
+        lg="5"
+        xl="4"
+        class="pr-md-1 pt-0"
+        color="#D3D3D4"
+      >
+        <v-list color="#D3D3D4" class="pt-0">
           <v-list-item v-for="i in 10" :key="i" class="pa-0 mb-6">
             <object-card></object-card>
           </v-list-item>
