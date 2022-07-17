@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid pa-0 class="search__container mb-16">
+  <v-container fluid pa-0 class="search__container mb-16 mr-5 ml-5">
     <v-row class="search__container__row">
       <v-col cols="12" md="6" lg="5" xl="4" class="pr-md-1">
         <v-list color="#D3D3D4">
@@ -56,6 +56,7 @@ export default {
 
 <style scoped>
 .search__container {
+  background: #d3d3d4;
   height: calc(100vh - 64px);
 }
 .search__container__row {

@@ -54,4 +54,7 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.v-main__wrap {
+  background: #d3d3d4;
+}
 </style>

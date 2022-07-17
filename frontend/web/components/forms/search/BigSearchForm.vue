@@ -1,6 +1,6 @@
 <template>
   <v-card class="border_radius_header">
-    <v-container class="py-0">
+    <v-container class="py-0 mr-15">
       <v-form ref="search">
         <v-row class="pt-3 pb-3">
           <v-spacer></v-spacer>

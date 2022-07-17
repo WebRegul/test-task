@@ -55,7 +55,7 @@
         :key="item.id"
         outlined
         :value="item.id"
-        class="chip_search hidden-xl-and-up hidden-md-and-down"
+        class="chip_search hidden-xl-and-up hidden-md-and-down v-text-field"
         >{{ item.title }}</v-chip
       >
       <!-- <v-chip
@@ -380,5 +380,13 @@ export default {
   width: 28px;
   height: 48px;
   border: 1px solid #afafb0;
+}
+.v-text-field {
+  font-family: 'Ubuntu';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.005em;
+  color: #37373a;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <v-card
     v-if="orientation == 'horizontal'"
-    class="object__card--horizontal rounded-lg elevation-1 mr-md-5"
+    class="object__card--horizontal rounded-lg elevation-1 md-5 mr-0 ml-0"
   >
     <v-container>
       <v-row>
-        <v-col class="pb-0" style="max-width: 393px">
+        <v-col class="pa-0 mr-1" style="max-width: 393px">
           <v-img
             min-width="224px"
             max-width="393px"
@@ -15,21 +15,24 @@
             class="rounded-lg"
           ></v-img>
         </v-col>
-        <v-col class="pb-0 align-end flex-column">
-          <v-row class="d-flex justify-space-between mt-1 mb-2">
-            <v-card-subtitle
-              class="align-self-start text--secondary text-caption pa-0 text-capitalize"
-              >{{ value.type.title }}</v-card-subtitle
-            >
-            <v-icon> mdi-heart-outline</v-icon>
-          </v-row>
+        <v-col class="pb-0 align-end flex-column pa-2">
+          <v-card-subtitle class="pb-0 pt-0">
+            <v-row class="d-flex justify-space-between mt-1 mb-2">
+              <v-card-actions
+                class="align-self-start text--secondary text-caption pa-0 text-capitalize"
+                >{{ value.type.title }}</v-card-actions
+              >
+              <v-icon> mdi-heart-outline</v-icon>
+            </v-row>
+          </v-card-subtitle>
+
           <v-card-title
-            class="align-self-start text-h6 pt-0 pb-5 pl-0 text-break"
-            style="line-height: 1.3rem"
+            class="align-self-start text-h6 pt-0 pb-5 pl-0 pr-0"
+            style="line-height: 1.3rem; font-size: 1rem !important"
           >
             {{ value.title }}
           </v-card-title>
-          <v-card-text class="mt-1 grow">
+          <v-card-text class="mt-0 mb-16 grow card__text__span">
             <v-row>
               <span class="mr-4">
                 {{ maxGuests | word_case(['гость', 'гостя', 'гостей']) }}
@@ -82,8 +85,8 @@
                 {{ value.rating.value }} ({{ value.reviews.count }})
               </div>
             </v-flex>
-            <v-flex class="text--darken-4 text-h6 text-right my-application">
-              <span>От {{ value.price | currency }} / ночь</span>
+            <v-flex class="text--darken-4 text-right my-application pt-3">
+              <span>от {{ value.price | currency }} / ночь</span>
             </v-flex>
           </v-card-actions>
         </v-col>
@@ -259,5 +262,15 @@ export default {
   line-height: 20px;
   letter-spacing: 0.004em;
   color: #00aca2;
+}
+.card__text__span {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  align-items: center;
+  letter-spacing: 0.004em;
+  color: #5f5f61;
 }
 </style>
