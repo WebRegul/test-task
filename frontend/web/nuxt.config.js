@@ -60,7 +60,8 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/router-extras'
+    '@nuxtjs/router-extras',
+    '@nuxtjs/svg',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -68,7 +69,7 @@ export default {
   // devModules: ['@nuxtjs/eslint-module'],
 
   router: {
-    middleware: ['geo']
+    middleware: ['geo'],
   },
 
   dayjs: {
@@ -77,6 +78,17 @@ export default {
     // defaultTimeZone: 'Asia/Tokyo',
     // plugins: [ 'utc', // import 'dayjs/plugin/utc' 'timezone' // import 'dayjs/plugin/timezone' ] // Your Day.js plugin
     plugins: ['customParseFormat'],
+  },
+  svg: {
+    vueSvgLoader: {
+      // vue-svg-loader options
+    },
+    svgSpriteLoader: {
+      // svg-sprite-loader options
+    },
+    fileLoader: {
+      // file-loader options
+    },
   },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

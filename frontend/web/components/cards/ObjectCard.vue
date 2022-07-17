@@ -1,44 +1,49 @@
 <template>
   <v-card
     v-if="orientation == 'horizontal'"
-    class="object__card--horizontal rounded-lg elevation-1"
+    class="object__card--horizontal rounded-lg elevation-1 md-5 mr-0 ml-0"
   >
     <v-container>
       <v-row>
-        <v-col class="pb-0" style="max-width: 270px">
+        <v-col class="pa-0 mr-1" style="max-width: 393px">
           <v-img
             min-width="224px"
-            max-width="260px"
+            max-width="393px"
+            max-height="300px"
             lazy-src="/1.jpg"
             src="/1.jpg"
             class="rounded-lg"
           ></v-img>
         </v-col>
-        <v-col class="pb-0 d-flex align-end flex-column">
-          <v-card-subtitle
-            class="align-self-start text--secondary text-caption text-uppercase pa-0"
-            >{{ value.type.title }}</v-card-subtitle
-          >
+        <v-col class="pb-0 align-end flex-column pa-2">
+          <v-card-subtitle class="pb-0 pt-0">
+            <v-row class="d-flex justify-space-between mt-1 mb-2">
+              <v-card-actions
+                class="align-self-start text--secondary text-caption pa-0 text-capitalize"
+                >{{ value.type.title }}</v-card-actions
+              >
+              <v-icon> mdi-heart-outline</v-icon>
+            </v-row>
+          </v-card-subtitle>
+
           <v-card-title
-            class="align-self-start text-h6 pt-0 pb-5 pl-0 text-break"
-            style="line-height: 1.3rem"
+            class="align-self-start text-h6 pt-0 pb-5 pl-0 pr-0"
+            style="line-height: 1.3rem; font-size: 1rem !important"
           >
             {{ value.title }}
           </v-card-title>
-          <v-card-text class="mt-1 grow">
+          <v-card-text class="mt-0 mb-16 grow card__text__span">
             <v-row>
               <span class="mr-4">
-                <v-icon color="primary">mdi-account-supervisor-outline</v-icon>
-                До {{ maxGuests | word_case(['гостя', 'гостей', 'гостей']) }}
+                {{ maxGuests | word_case(['гость', 'гостя', 'гостей']) }}
               </span>
               <span class="mr-4">
-                <v-icon color="accent">mdi-door-open</v-icon>
-                {{ rooms | word_case(['комната', 'комнаты', 'комнат']) }}
+                {{ bed | word_case(['кровать', 'коровати', 'кроватей']) }}
               </span>
               <span class="mr-4">
-                <v-icon>mdi-hammer-sickle</v-icon>
-                {{ square }} м<sup>2</sup>
+                {{ bedroom | word_case(['спальня', 'спальни', 'спален']) }}
               </span>
+              <span class="mr-4"> {{ square }} м<sup>2</sup> </span>
             </v-row>
             <v-row class="mt-5">
               <v-chip
@@ -54,6 +59,13 @@
                 {{ item.title }}
               </v-chip>
             </v-row>
+            <v-row>
+              <ul class="var-list">
+                <li>Несколько вариантов питания</li>
+                <li>Горящее предложение</li>
+                <li>Предоплата</li>
+              </ul>
+            </v-row>
           </v-card-text>
           <v-spacer></v-spacer>
           <v-card-actions
@@ -62,25 +74,25 @@
             <v-flex class="d-inline-flex align-center">
               <v-rating
                 :value="value.rating.value"
-                color="amber"
+                color="orange darken-1"
                 dense
                 half-increments
                 readonly
-                size="14"
+                length="1"
+                size="25"
               ></v-rating>
               <div class="grey--text text-caption">
                 {{ value.rating.value }} ({{ value.reviews.count }})
               </div>
             </v-flex>
-            <v-flex class="text--darken-2 text--secondary text-h6 text-right">
-              <span>{{ value.price | currency }}</span>
+            <v-flex class="text--darken-4 text-right my-application pt-3">
+              <span>от {{ value.price | currency }} / ночь</span>
             </v-flex>
           </v-card-actions>
         </v-col>
       </v-row>
     </v-container>
   </v-card>
-
   <v-card
     v-else-if="orientation == 'vertical'"
     style="width: 350px"
@@ -112,7 +124,6 @@
             :value="value.rating.value"
             color="amber"
             dense
-            half-increments
             readonly
             size="14"
           ></v-rating>
@@ -122,7 +133,7 @@
           <div
             class="text--darken-2 text--secondary text-h6 text-right ml-auto"
           >
-            <span>{{ value.price | currency }}</span>
+            <span>От {{ value.price | currency }}</span>
           </div>
         </v-row>
       </v-card-text>
@@ -146,7 +157,7 @@ export default {
       type: Object,
       default: () => ({
         id: '1',
-        title: 'Уютная однокомнатная халупа с видом на море  с видом на море',
+        title: 'Уютная однокомнатная квартира с видом на море',
         price: 4500,
         type: {
           id: 1,
@@ -155,12 +166,13 @@ export default {
         },
         params: [
           { id: '1', name: 'square', title: 'Площадь', value: '40' },
-          { id: '2', name: 'rooms', title: 'Количество комнат', value: '2' },
+          { id: '2', name: 'bed', title: 'Количество кроватей', value: '2' },
+          { id: '4', name: 'bedroom', title: 'Количество спален', value: '1' },
           {
             id: '3',
             name: 'max_guests',
             title: 'Максимальное количество гостей',
-            value: '5',
+            value: '4',
           },
         ],
         options: [
@@ -170,39 +182,31 @@ export default {
             title: 'Wi-Fi',
             order: 0,
             primary: true,
-            icon: 'mdi-access-point',
+            icon: 'mdi-wifi',
           },
           {
             id: '2',
-            name: 'cond',
-            title: 'Кондиционер',
+            name: 'pets',
+            title: 'Pets friendly',
             order: 1,
             primary: true,
-            icon: 'mdi-cloud-refresh',
+            icon: 'mdi-waves',
           },
           {
             id: '3',
             name: 'stir',
-            title: 'Стиральная машина',
+            title: 'Бесплатная отмена',
             order: 2,
             primary: true,
-            icon: 'mdi-compass-rose',
-          },
-          {
-            id: '4',
-            name: 'utug',
-            title: 'Утюг',
-            order: 3,
-            primary: true,
-            icon: 'mdi-toilet',
+            icon: 'mdi-relation-many-to-many',
           },
         ],
         rating: {
-          value: 3.5,
+          value: 4.75,
           detail: {},
         },
         reviews: {
-          count: 0,
+          count: '8 отзывов',
           list: [],
         },
       }),
@@ -226,8 +230,12 @@ export default {
     square() {
       return this.params.get('square').value
     },
-    rooms() {
-      return this.params.get('rooms').value
+
+    bed() {
+      return this.params.get('bed').value
+    },
+    bedroom() {
+      return this.params.get('bedroom').value
     },
     maxGuests() {
       return this.params.get('max_guests').value
@@ -246,5 +254,23 @@ export default {
 }
 .object__card--horizontal__card-actions {
   width: 100%;
+}
+.var-list {
+  font-family: 'Ubuntu';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.004em;
+  color: #00aca2;
+}
+.card__text__span {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  align-items: center;
+  letter-spacing: 0.004em;
+  color: #5f5f61;
 }
 </style>

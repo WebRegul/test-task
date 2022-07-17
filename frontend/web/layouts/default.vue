@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <base-header />
-    <v-main>
+    <v-main class="color-main mb-16">
       <v-container :fluid="isFullPage" pa-0>
         <Nuxt />
       </v-container>

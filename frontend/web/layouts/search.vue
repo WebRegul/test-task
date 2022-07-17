@@ -1,19 +1,21 @@
 <template>
   <v-app light>
-    <base-header search />
+    <main-header class="mb-4 mt4 color-header header-height" search />
     <full-search-form></full-search-form>
     <v-main app class="pa0">
       <Nuxt />
     </v-main>
+    <main-footer></main-footer>
   </v-app>
 </template>
 
 <script>
 import FullSearchForm from '../components/forms/search/FullSearchForm'
-import BaseHeader from './includes/BaseHeader'
+import MainHeader from './includes/MainHeader'
+import MainFooter from './includes/MainFooter.vue'
 export default {
   name: 'SearchLayout',
-  components: { FullSearchForm, BaseHeader },
+  components: { FullSearchForm, MainHeader, MainFooter },
   data() {
     return {
       clipped: false,
@@ -44,4 +46,15 @@ export default {
   },
 }
 </script>
-<style></style>
+<style>
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background-color: #ebebec;
+}
+.header-height {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.v-main__wrap {
+  background: #d3d3d4;
+}
+</style>
