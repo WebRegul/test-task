@@ -42,6 +42,7 @@
       height="54px"
       class="mt-2 full_search__panel__select--house-types"
     ></v-select>
+    <v-divider inset vertical class="mr-4 ml-4 vertical_header"></v-divider>
     <v-chip-group
       v-model="filters.options"
       multiple
@@ -54,11 +55,24 @@
         :key="item.id"
         outlined
         :value="item.id"
-        class="chip_search"
+        class="chip_search hidden-xl-and-up hidden-md-and-down"
         >{{ item.title }}</v-chip
       >
+      <!-- <v-chip
+        v-for="item in optionsList"
+        v-show="item.original"
+        :key="item.id"
+        outlined
+        :value="item.id"
+        class="chip_search hidden-xl-and-down hidden-lg-and-up"
+        >{{ item.title }}</v-chip
+      > -->
     </v-chip-group>
-
+    <v-divider
+      inset
+      vertical
+      class="mr-4 ml-4 vertical_header hidden-xl-and-up hidden-md-and-down"
+    ></v-divider>
     <v-dialog
       v-model="advancedFiltersShow"
       persistent
@@ -221,6 +235,7 @@ export default {
           title: 'Бесплатная отмена',
           order: -1,
           primary: true,
+          original: true,
         },
         {
           id: '9',
@@ -228,6 +243,7 @@ export default {
           title: 'Мгновенное подтверждение',
           order: 0,
           primary: true,
+          original: true,
         },
         {
           id: '2',
@@ -235,6 +251,7 @@ export default {
           title: 'Суперхозяин',
           order: 1,
           primary: true,
+          original: true,
         },
         {
           id: '3',
@@ -242,6 +259,7 @@ export default {
           title: 'Горящее предложение',
           order: 2,
           primary: true,
+          original: true,
         },
         {
           id: '4',
@@ -249,6 +267,7 @@ export default {
           title: 'Что-то ещё',
           order: 3,
           primary: true,
+          original: false,
         },
         {
           id: '5',
@@ -256,6 +275,7 @@ export default {
           title: 'И ещё что-нибудь',
           order: 4,
           primary: true,
+          original: false,
         },
         {
           id: '6',
@@ -263,6 +283,7 @@ export default {
           title: 'И ещё что-то длинное длинное',
           order: 5,
           primary: true,
+          original: false,
         },
         { id: '7', name: 'tele', title: 'Телевизор', order: 6, primary: false },
         { id: '8', name: 'dza', title: 'Джакузи', order: 7, primary: false },
@@ -353,5 +374,11 @@ export default {
   width: 150px;
   text-align: center;
   justify-content: center;
+}
+
+.vertical_header {
+  width: 28px;
+  height: 48px;
+  border: 1px solid #afafb0;
 }
 </style>

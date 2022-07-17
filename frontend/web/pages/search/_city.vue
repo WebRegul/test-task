@@ -7,7 +7,6 @@
             <object-card></object-card>
           </v-list-item>
           <pagination></pagination>
-          <pagination-margin></pagination-margin>
         </v-list>
       </v-col>
 
@@ -29,12 +28,11 @@ import { mapActions } from 'vuex'
 
 import ObjectCard from '../../components/cards/ObjectCard'
 import Pagination from '../../components/pagination/Pagination'
-import PaginationMargin from '../../components/pagination/PaginationMargin'
 import SearchMap from '../../components/maps/SearchMap'
 
 export default {
   name: 'SearchPage',
-  components: { SearchMap, ObjectCard, Pagination, PaginationMargin },
+  components: { SearchMap, ObjectCard, Pagination },
   layout: 'search',
   data() {
     return {}

@@ -5,7 +5,8 @@
     height="80px"
     class="align-baseline justify-sm-center align-content-center color-header"
   >
-    <v-btn icon class="ml-3">
+    <v-app-bar-nav-icon class="hidden-md-and-up"></v-app-bar-nav-icon>
+    <v-btn icon class="ml-3 hidden-xl-and-up hidden-sm-and-down">
       <img src="~assets/images/svg/logo.svg" />
     </v-btn>
     <v-spacer />
@@ -21,11 +22,11 @@
       text
       width="186px"
       height="48px"
-      class="mr-md-5 text-capitalize color-btn"
+      class="mr-md-5 text-capitalize color-btn hidden-xl-and-up hidden-sm-and-down"
       >Вход</v-btn
     >
     <v-btn
-      class="text-capitalize color-btn"
+      class="text-capitalize color-btn hidden-xl-and-up hidden-sm-and-down"
       outlined
       plain
       raised
